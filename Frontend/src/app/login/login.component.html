@@ -1,0 +1,153 @@
+<!-- <body>
+  <div class='card-header'>
+      <h3 style="text-align: center;">Log In</h3>
+  </div>
+      <h2 style="text-align: center; margin-top: 5%;">Login to explore!!</h2>
+      <div class='card-body' style="width: 30%; margin-left: 35%; margin-top: 5%; padding-bottom: 10%;">
+      <form class="form" [formGroup]='user' (ngSubmit)='userLogin()' enctype="multipart/form-data">
+        <div class='form-group'>
+          <label for="email">Email</label>
+          <input type="email" class='form-control' formControlName='email' name='email'>
+        </div>
+        <span class='text-danger' *ngIf='(formControl.email.touched || submitted) && formControl.email.errors?.required'>
+        </span>
+        <br>
+        <div class='form-group'>
+          <label for="password">Password</label>
+          <input type="password" class='form-control' formControlName='password' name='password'>
+        </div>
+        <span class="text-danger" *ngIf='(formControl.password.touched || submitted) && formControl.password.errors?.required'>
+        </span>
+        <div class='form-group text-center text-danger' *ngIf="errorMsg">
+            Email ID or Password is incorrect.
+        </div><br>
+        <button class="btn btn-primary" style="margin-left: 40%;" [disabled]="user.invalid">Login</button>
+      </form>
+      </div>
+  </body>
+  
+   -->
+
+
+<!--<app-navbar></app-navbar>
+ form starts here -->
+ <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="logo ">
+    <img src="images/logo.jpeg" alt="logo">
+  </div>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">BlestAbode</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse nav justify-content-end" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link" routerLink="/aboutus">About Us</a>
+        <a class="nav-link" routerLink="/login">Login</a>
+        <a class="nav-link" routerLink="/signup">SignUp</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="row">
+  <div class="col-lg-6"></div>
+  <div class="col-lg-5" style="margin-top: 2%; margin-bottom: 2%">
+    <div id="transbox" class="rounded">
+      <h2 style="text-align: center">Welcome back!</h2>
+      <br />
+
+      <form #userlogin="ngForm" (ngSubmit)="loginUser()">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputUser" style="font-weight: bold">Username</label>
+            <input
+              type="text"
+              class="form-control"
+              name="uname"
+              [(ngModel)]="user.uname"
+              minlength="3"
+              #username="ngModel"
+              [class.is-invalid]="username.invalid && username.touched"
+              required
+            />
+            <small
+              class="text-danger"
+              [class.d-none]="username.valid || username.untouched"
+              >Username does not exist!</small
+            >
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4" style="font-weight: bold"
+              >Password</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              pattern="^(?=.[A-Za-z])(?=.\d)[A-Za-z\d]{8,}$"
+              #pw="ngModel"
+              [class.is-invalid]="pw.invalid && pw.touched"
+              [(ngModel)]="user.pw"
+              name="pw"
+              required
+            />
+            <small class="text-danger" [class.d-none]="pw.valid || pw.untouched"
+              >Incorrect password!</small
+            >
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label
+              for="inputRole"
+              style="font-weight: bold"
+              FormControlName="role"
+              >Role</label
+            >
+            <select
+              name="role"
+              class="form-control"
+              [(ngModel)]="user.role"
+              required
+            >
+              <option value="1">Customer</option>
+              <option value="2">Landlord</option>
+            </select>
+          </div>
+          <!-- <div *ngIf="checkRole()" class="form-group col-md-6">
+            <label style="font-weight: bold" FormControlName="subject"
+              >Subject</label
+            >
+            <select
+              name="subject"
+              class="form-control"
+              [(ngModel)]="user.subject"
+              required
+            >
+              <option value="1">Mathematics</option>
+              <option value="2">Science</option>
+              <option value="3">Social Studies</option>
+              <option value="4">English</option>
+            </select>
+          </div> -->
+        </div>
+        <br />
+        <button
+          id="submit"
+          type="submit"
+          class="btn btn-warning"
+          style="font-weight: bolder"
+          [disabled]="userlogin.form.invalid"
+        >
+          Login
+        </button>
+      </form>
+      <!-- form ends here -->
+    </div>
+  </div>
+  <div class="col-lg-1"></div>
+</div>
+
+<div class="footer">
+  <h5>Copyright@BlestAbode</h5>
+</div>
